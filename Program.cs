@@ -17,13 +17,11 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    // Определяне на пътя към XML файла с коментарите
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     c.IncludeXmlComments(xmlPath);
 });
 
-// Другите регистрации, напр. за DbContext, контролери и т.н.
 builder.Services.AddDbContext<BeverageWarehouseAPI.Data.BeverageWarehouseDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace BeverageWarehouseAPI.Models
 {
@@ -14,7 +15,9 @@ namespace BeverageWarehouseAPI.Models
 
         [Required]
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+
+        [JsonIgnore]
+        public Category? Category { get; set; }
 
         [Required]
         [StringLength(100)]

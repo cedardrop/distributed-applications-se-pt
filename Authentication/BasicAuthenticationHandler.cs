@@ -20,7 +20,6 @@ namespace BeverageWarehouseAPI.Authentication
 
         protected override Task<AuthenticateResult> HandleAuthenticateAsync()
         {
-            // Проверяваме дали заглавката съдържа Authorization
             if (!Request.Headers.ContainsKey("Authorization"))
             {
                 return Task.FromResult(AuthenticateResult.Fail("Missing Authorization Header"));
@@ -34,8 +33,6 @@ namespace BeverageWarehouseAPI.Authentication
                 var username = credentials[0];
                 var password = credentials[1];
 
-                // Тук можете да извършите проверка спрямо база данни или други хардкоднати стойности.
-                // За демонстрация, приемаме: username="admin" и password="password"
                 if (username != "admin" || password != "password")
                 {
                     return Task.FromResult(AuthenticateResult.Fail("Invalid Username or Password"));
